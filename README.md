@@ -1,62 +1,59 @@
-<p align="center">
-  <a href="https://roots.io/bedrock/">
-    <img alt="Bedrock" src="https://cdn.roots.io/app/uploads/logo-bedrock.svg" height="100">
-  </a>
-</p>
+# rootsio-bedrock-poc
 
-<p align="center">
-  <a href="https://packagist.org/packages/roots/bedrock">
-    <img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/bedrock?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square">
-  </a>
+## Overviews
 
-  <a href="https://packagist.org/packages/roots/wordpress">
-    <img alt="roots/wordpress Packagist Downloads" src="https://img.shields.io/packagist/dt/roots/wordpress?label=roots%2Fwordpress%20downloads&logo=roots&logoColor=white&colorB=2b3072&colorA=525ddc&style=flat-square">
-  </a>
-  
-  <img src="https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/roots/bedrock/master/composer.json&label=wordpress&logo=roots&logoColor=white&query=$.require[%22roots/wordpress%22]&colorB=2b3072&colorA=525ddc&style=flat-square">
+FTP를 이용한 개발방식 폐지를 위해 수행하는 PoC 입니다. 개발자가 인프라팀이 구축한 개발서버 및 기타 클라우드 자원에 의존하지 않고 로컬머신에서 모든 테스트 및 디버깅이 가능하도록 지원하기 위한 프로젝트 입니다.
 
-  <a href="https://github.com/roots/bedrock/actions/workflows/ci.yml">
-    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/bedrock/ci.yml?branch=master&logo=github&label=CI&style=flat-square">
-  </a>
+해당 PoC는 프로젝트 시작시 필요한 플러그인 및 Themes가 설치되어 있습니다.
 
-  <a href="https://twitter.com/rootswp">
-    <img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square">
-  </a>
-</p>
+## Requirements
 
-<p align="center">WordPress boilerplate with Composer, easier configuration, and an improved folder structure</p>
+1. php >= 8.1
+2. composer >=2.8
+3. composer auth.json 설정
 
-<p align="center">
-  <a href="https://roots.io/bedrock/">Website</a> &nbsp;&nbsp; <a href="https://roots.io/bedrock/docs/installation/">Documentation</a> &nbsp;&nbsp; <a href="https://github.com/roots/bedrock/releases">Releases</a> &nbsp;&nbsp; <a href="https://discourse.roots.io/">Community</a>
-</p>
+## Requirements - `auth.json`
 
-## Sponsors
+'ACF Pro'와 같이 WPackagist Repository에 존재하지 않는 플러그인을 위해 설정합니다. ACF Pro의 경우 WPEngine에서 [Installing ACF PRO With Composer](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/)와 같은 가이드를 통해 Composer로 설치할 수 있도록 지원합니다. auth.json 파일에 대한 자세한 정보가 궁금하다면 [여기](https://getcomposer.org/doc/articles/authentication-for-private-packages.md)를 읽어보세요.
 
-Bedrock is an open source project and completely free to use. If you've benefited from our projects and would like to support our future endeavors, please consider [sponsoring Roots](https://github.com/sponsors/roots).
+아래의 명령어를 통해 auth.json을 전역 설정합니다.
 
-<div align="center">
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="120" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" width="120" height="90"></a> <a href="https://bonsai.so/"><img src="https://cdn.roots.io/app/uploads/bonsai.svg" alt="Bonsai" width="120" height="90"></a> <a href="https://fusepress.co/sp/sign-up/"><img src="https://cdn.roots.io/app/uploads/fusepress.svg" alt="FusePress" width="120" height="90"></a>
-</div>
+```bash
+composer config --global --editor --auth
 
-## Overview
+# 위 명령어를 통해 auth.json을 수정하기 힘들다면
+# 아래의 명령어를 통해 출력된 경로에서 auth.json을 찾아
+# 직접 수정해도 됩니다.
+#
+# $ composer config --global home
+```
 
-Bedrock is a WordPress boilerplate for developers that want to manage their projects with Git and Composer. Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology, including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+이제 출력되는 에디터에 아래와 같이 입력합니다.
 
-- Better folder structure
-- Dependency management with [Composer](https://getcomposer.org)
-- Easy WordPress configuration with environment specific files
-- Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-- Autoloader for mu-plugins (use regular plugins as mu-plugins)
-- Enhanced security (separated web root and secure passwords with [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt))
+```jsonc
+{
+  "bitbucket-oauth": {},
+  "github-oauth": {
+    "github.com": "<GITHUB TOKEN>"
+  },
+  "gitlab-oauth": {},
+  "gitlab-token": {},
+  "http-basic": {
+    "connect.advancedcustomfields.com": {
+      "username": "<ACF-Pro License Key>",
+      "password": "https://studio-jt.co.kr"
+    }
+  },
+  "bearer": {}
+}
+```
 
-## Getting Started
+## Let's run on local machine
 
-See the [Bedrock installation documentation](https://roots.io/bedrock/docs/installation/).
+```bash
+composer install
+```
 
-## Stay Connected
+## auth.json
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Participate on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Read the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/newsletter/)
+[Composer를 이용한 ACF PRO 설치](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/)를 위해 반드시 필요하다.

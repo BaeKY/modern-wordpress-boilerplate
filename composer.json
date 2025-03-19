@@ -17,7 +17,12 @@
     }
   ],
   "keywords": [
-    "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
+    "bedrock",
+    "composer",
+    "roots",
+    "wordpress",
+    "wp",
+    "wp-config"
   ],
   "support": {
     "issues": "https://github.com/roots/bedrock/issues",
@@ -27,7 +32,14 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org",
-      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
     }
   ],
   "require": {
@@ -37,10 +49,13 @@
     "oscarotero/env": "^2.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
-    "roots/wordpress": "6.7.2",
+    "roots/wordpress": "6.8.1",
     "roots/wp-config": "1.0.0",
-    "roots/wp-password-bcrypt": "1.2.0",
-    "wpackagist-theme/twentytwentyfive": "^1.0"
+    "wpackagist-plugin/google-sitemap-generator": "^4.1",
+    "wpackagist-plugin/simple-custom-post-order": "2.5.10",
+    "wpackagist-plugin/wp-super-cache": "2.0.0",
+    "wpackagist-plugin/redis-cache": "2.5.4",
+    "wpengine/advanced-custom-fields-pro": "6.3.12"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
@@ -58,9 +73,15 @@
   "prefer-stable": true,
   "extra": {
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
     },
     "wordpress-install-dir": "web/wp"
   },
