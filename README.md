@@ -31,11 +31,16 @@ composer install
 # .env.local 파일을 완성시킨다
 composer run-script env:local
 
+# 서버 시작!
 ddev start
-
 # https://rootsio-bedrock-poc.ddev.site 로 접근하여 실행된걸 확인한다.
-# 처음 접속하면 플러그인 및 테마가 활성화 되어있지 않으므로 아무것도 안뜹니다.
-# 관리자 로그인 하여 활성화 후 개발하면 됩니다!
+# 아마 WordPress Install 하라고 뜰 것이다.
+# 직접 입력하여 Install 하거나 이어서 나오는 명령어를 통해 Instlal 한다.
+ddev wp core install --url="https://rootsio-bedrock-poc.ddev.site" --title="Bedrock PoC" --admin_user="studio-jt" --admin_email="support@studio-jt.co.kr"
+
+
+# 브라우저를 통해 처음 접속하면 DB 초기화가 되어있지 않아 WordPress 설치 화면이 뜹니다.
+# 설치 완료 후 관리자 접속하여 플러그인 활성화 및 테마 선택을 진행하면 세팅이 완료됩니다.
 ```
 
 프로젝트 정보를 확인하고싶다면 아래의 명령어를 입력한다.

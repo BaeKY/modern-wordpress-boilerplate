@@ -59,7 +59,7 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
-    "laravel/pint": "^1.18"
+    "laravel/pint": "1.21.2"
   },
   "config": {
     "optimize-autoloader": true,
