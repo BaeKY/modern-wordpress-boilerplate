@@ -1,0 +1,63 @@
+{
+  "sections": [
+    {
+      "name": "로컬 개발용 필수 환경변수 설정",
+      "required": true,
+      "scheme": [
+        {
+          "name": "DB_PREFIX",
+          "description": "DB 테이블 Prefix",
+          "default": "wp_"
+        },
+        {
+          "name": "AME_LICENSE_KEY",
+          "description": "Admin Menu Editor-Pro 라이선스 키",
+          "is_secret": true
+        }
+      ]
+    },
+    {
+      "name": "SMTP 설정",
+      "required": true,
+      "scheme": [
+        {
+          "name": "JT_SMTP_HOST",
+          "description": "SMTP Host URI",
+          "default": "smtp.gmail.com"
+        },
+        {
+          "name": "JT_SMTP_USER",
+          "description": "SMTP User"
+        },
+        {
+          "name": "JT_SMTP_PASSWORD",
+          "description": "SMTP Password",
+          "is_secret": true
+        },
+        {
+          "name": "JT_SMTP_PORT",
+          "description": "SMTP Port",
+          "default": "587"
+        },
+        {
+          "name": "JT_SMTP_FROM",
+          "description": "SMTP From email"
+        },
+        {
+          "name": "JT_SMTP_FROMNAME",
+          "description": "SMTP From name"
+        },
+        {
+          "name": "JT_SMTP_AUTH",
+          "description": "SMTP Auth (true / false)",
+          "default": "true"
+        },
+        {
+          "name": "JT_SMTP_SECURE",
+          "description": "SMTP Secure",
+          "default": "tls"
+        }
+      ]
+    }
+  ]
+}

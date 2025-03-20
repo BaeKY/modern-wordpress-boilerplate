@@ -1,0 +1,4 @@
+{
+    "laravel-pint.enable": true,
+    "laravel-pint.preset": "per"
+}

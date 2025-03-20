@@ -87,6 +87,7 @@
   },
   "scripts": {
     "lint": "pint --test",
-    "lint:fix": "pint"
+    "lint:fix": "pint",
+    "env:local": "./scripts/env-for-localdev.sh"
   }
 }
