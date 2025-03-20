@@ -143,6 +143,23 @@ Config::define('SCRIPT_DEBUG', false);
 ini_set('display_errors', '0');
 
 /**
+ * License Key for Admin Menu Editor-Pro
+ */
+Config::define('AME_LICENSE_KEY', env('AME_LICENSE_KEY'));
+
+/**
+ * JT SMTP 설정
+ */
+Config::define('JT_SMTP_HOST', env('JT_SMTP_HOST'));
+Config::define('JT_SMTP_USER', env('JT_SMTP_USER'));
+Config::define('JT_SMTP_PASSWORD', env('JT_SMTP_PASSWORD'));
+Config::define('JT_SMTP_PORT', env('JT_SMTP_PORT'));
+Config::define('JT_SMTP_FROM', env('JT_SMTP_FROM'));
+Config::define('JT_SMTP_FROMNAME', env('JT_SMTP_FROMNAME'));
+Config::define('JT_SMTP_AUTH', env('JT_SMTP_AUTH'));
+Config::define('JT_SMTP_SECURE', env('JT_SMTP_SECURE'));
+
+/**
  * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer
  * See https://codex.wordpress.org/Function_Reference/is_ssl#Notes
  */
