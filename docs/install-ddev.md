@@ -6,7 +6,7 @@
 
 - WSL2 (고통받기 싫으면 사용하는걸 권장. 이거 안쓰면 퍼포먼스 문제로 mutagen 설정까지 해야함)
 
-## Intallation
+## Installation
 
 > Opt1, Opt2 중 하나만 수행
 
