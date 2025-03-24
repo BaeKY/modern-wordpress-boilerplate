@@ -12,38 +12,53 @@
 
 ## Requirements
 
-1. WSL2
+1. WSL2 (Ubuntu24.04)
 2. php >= 8.1
 3. [composer >=2.8](https://www.digitalocean.com/community/tutorials/how-to-install-composer-on-ubuntu-22-04-quickstart)
 4. [composer auth.json 설정](/docs/composer-auth-json.md)
 5. jq >= 1.7 (`sudo apt install jq`)
-6. [ddev 설치](/docs/install-ddev.md)
+6. Docker (Windows에서 Docker Desktop 설치 또는 WSL 내부에서 docker-ce 설치)
+7. [ddev 설치](/docs/install-ddev.md)
 
 ## Getting Started
+
+> WSL 내부에서 수행합니다.
 
 아래의 스크립트를 통해 프로젝트를 동작시킵니다.
 
 ```bash
-# Plugin을 설치합니다
+# 플러그인 및 테마를 설치합니다
 composer install
 
 # 아래 명령어를 통해  출력되는 프롬프트를 따라
-# .env.local 파일을 완성시킨다
+# .env 파일을 완성시킵니다.
 composer run-script env:local
 
 # 서버 시작!
 ddev start
-# https://rootsio-bedrock-poc.ddev.site 로 접근하여 실행된걸 확인한다.
-# 아마 WordPress Install 하라고 뜰 것이다.
-# 직접 입력하여 Install 하거나 이어서 나오는 명령어를 통해 Instlal 한다.
-ddev wp core install --url="https://rootsio-bedrock-poc.ddev.site" --title="Bedrock PoC" --admin_user="studio-jt" --admin_email="support@studio-jt.co.kr"
 
+# 이제 아래의 URL로 접근이 가능합니다
+#
+# - https://rootsio-bedrock-poc.ddev.site
+#
+# 처음 접근시 WordPress Install 화면이 출력됩니다.
+# 사이트에 접속하여 WordPress Install을 진행하고 플러그인 및 테마를 활성화 할 수도 있지만
+# 이어서 나오는 명령어를 통해 해당 과정을 빠르게 설정할 수 있습니다.
 
-# 브라우저를 통해 처음 접속하면 DB 초기화가 되어있지 않아 WordPress 설치 화면이 뜹니다.
-# 설치 완료 후 관리자 접속하여 플러그인 활성화 및 테마 선택을 진행하면 세팅이 완료됩니다.
+# WordPress Install
+ddev wp core install \
+   --url="https://rootsio-bedrock-poc.ddev.site" \
+   --title="Bedrock PoC" \
+   --admin_user="studio-jt" \
+   --admin_email="support@studio-jt.co.kr" \
+   --admin_password="P@ssw0rd"
+
+# Activate Wordpress plugins and themes.
+ddev wp plugin activate --all --exclude=redis-cache,jt-bed-ux-popup
+ddev wp theme activate jt-press
 ```
 
-프로젝트 정보를 확인하고싶다면 아래의 명령어를 입력한다.
+내 로컬머신에 실행된 프로젝트 정보를 확인하고 싶다면 아래와 같은 명령어를 입력합니다.
 
 ```bash
 $ ddev status
@@ -78,20 +93,21 @@ $ ddev status
 
 해당 프로젝트에는 XDebug까지 사용 가능하도록 설정되어 있습니다. 아래의 순서에 따라 디버거를 사용할 수 있습니다.
 
-1. `F5`를 눌러 XDebug를 실행한다.
-2. 디버깅 하고자하는 코드에서 아래의 사진과 같이 Break Point를 찍는다.
+1. `F5`를 눌러 XDebug를 실행합니다.
+2. 디버깅 하고자하는 코드에서 아래의 사진과 같이 Break Point를 설정합니다.
 
-   > 사진에서는 jtpress테마의 index.php에서 찍었다.
+   > 사진에서는 jtpress테마의 [index.php#15](/web/app/themes/jt-press/index.php#15)에 설정하였습니다.
 
    ![alt text](/docs/pics/vscode-debug-1.png)
 
-3. 이제 `https://rootsio-bedrock-poc.ddev.site/`로 접근하면 아래와 같이 Break Point에서 멈춘다.
+3. 이제 `https://rootsio-bedrock-poc.ddev.site/`로 접근하면 아래와 같이 Break Point에서 멈춥니다.
 
    ![alt text](/docs/pics/vscode-debug-2.png)
 
-   주의해야 할 점은 브라우저는 응답이 없을 경우 요청을 지속적으로 보낸다.
-
-   여러번 보내진 요청이 디버깅할때 조금 헤깔리게 만들 수 있으므로 Break Point에서 멈춘 순간 브라우저는 `ESC` 키를 눌러 더이상 요청을 하지 않도록 만든다.
+   > ### 주의
+   >
+   > 브라우저는 응답이 없을 경우 요청을 지속적으로 보냅니다.
+   > 여러번 보내진 요청이 디버깅할때 헤깔리게 만들 수 있으므로 Break Point에서 멈춘 순간 브라우저는 `ESC` 키를 눌러 더이상 요청을 하지 않도록 만듭니다.
 
 4. Debugger에서 제공해주는 정보를 토대로 디버깅한다. VSCode Debugger와 관련된 추가적인 내용은 아래의 링크에서 확인 가능합니다.
 
@@ -102,7 +118,7 @@ $ ddev status
 ```Bash
 ddev stop
 
-# 완전히 제거하고싶다면 아래와 같이 입력
+# 완전히 제거하고싶다면 아래와 같이 입력합니다
 # ddev remove
 # ddev clean
 ```
