@@ -1,4 +1,12 @@
 {
-    "laravel-pint.enable": true,
-    "laravel-pint.preset": "per"
+    "php.validate.enable": true,
+    "php.codeActions.enabled": true,
+    "php.inlayHints.parameters.enabled": true,
+    "php.problems.scope": "opened",
+    "php.version": "8.3",
+    "php.validate.executablePath": "/usr/bin/php",
+    "[php]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+    }
 }
