@@ -9,7 +9,6 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 require_once dirname(__DIR__) . '/config/application.php';
 
 // Include for ddev-managed settings in wp-config-ddev.php.
-define('WP_CACHE', true);
 define('WPCACHEHOME', '/var/www/html/web/app/plugins/wp-super-cache/');
 $ddev_settings = dirname(__FILE__) . '/wp-config-ddev.php';
 if (is_readable($ddev_settings) && !defined('DB_USER')) {
