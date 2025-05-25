@@ -1,14 +1,10 @@
-# rootsio-bedrock-poc
+# modern-wordpress-boilerplate
 
 > 해당 프로젝트는 [Bedrock](https://roots.io/bedrock/) + [DDEV](https://ddev.com/)를 사용하여 구성하였습니다.
 
 ## Overviews
 
-개발자가 인프라팀이 구축한 개발서버 및 기타 클라우드 자원에 덜 의존하고 로컬머신에서 테스트 및 디버깅이 가능하도록 지원하기 위한 프로젝트 입니다.
-
-또한 VCS를 통해 소스코드가 어떻게 변해왔는지 추적이 가능하고 더이상 유실되는 코드가 없도록 만듭니다.
-
-해당 보일러플레이트는 프로젝트 시작시 필요한 플러그인 및 테마를 Composer를 통해 로컬에서 쉽게 설치할 수 있도록 만들어졌습니다.
+로컬 환경에서 WordPress 애플리케이션을 개발, 디버깅 하기 위한 보일러플레이트 입니다. 
 
 ## Requirements
 
@@ -27,7 +23,7 @@
    ```
 
 6. Docker (아래의 방법 중 1택)
-   - [Docker Desktop 설치](/docs/install-docker-desktop.md)   <- 이게 훨씬 간단함
+   - [Docker Desktop 설치](/docs/install-docker-desktop.md)   <- 이게 훨씬 간단함 but, 느림
    - (WSL 내부에서) Docker CE 설치
 7. [ddev 설치](/docs/install-ddev.md)
 
@@ -147,4 +143,4 @@ WP-CLI를 통해 아래와 같은 작업들이 가능합니다.
 - 워드프레스 유저 컨텐츠 Export
 - etc...(`ddev wp --help`)
 
-(작성중)
+...
